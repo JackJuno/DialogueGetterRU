@@ -15,8 +15,8 @@ def get_filepaths(dir_path: str) -> list:
 def pipeline(src_dir_path):
     # open src dir & pre-process files -> list of files ready to change to utf-8
     src_filepaths_list = get_filepaths(src_dir_path)
-    # check language, char code & change to utf-8 -> create a new dir with .txt files ready for str purification
+    # 1. check language, char code & change to utf-8 -> create a new dir with .txt files ready for str purification
+    # 2. check text newline pattern & remove breaks in dialogue lines -> files ready for dialogues extraction
     check_n_change_to_utf(src_filepaths_list, src_dir_path)
-    # check str format pattern & remove breaks in dialogue lines -> files ready for dialogues extraction
 
 # pipeline('/home/zonengeistbot/Documents/test') # /home/zonengeistbot/Documents/test

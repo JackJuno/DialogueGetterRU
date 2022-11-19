@@ -1,6 +1,7 @@
 import os
 from chardet.universaldetector import UniversalDetector
 from loguru import logger
+from TextOps.text_preprocessor import *
 
 
 def check_n_change_to_utf(src_file_paths, parent_dir_path):
@@ -34,3 +35,5 @@ def check_n_change_to_utf(src_file_paths, parent_dir_path):
                 for line in f:
                     text.writelines(line)
         counter += 1
+    # check text newline pattern & remove breaks in dialogue lines -> files ready for dialogues extraction
+    check_n_fix_newlines_pattern(new_path)

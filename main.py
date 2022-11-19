@@ -13,6 +13,7 @@ from FileTreeOps.dir_preprocessor import pipeline
 SRC_PATH = ''
 DTSET_PATH = ''
 
+
 # UI foos
 def input_src():
     # save a path to var
@@ -42,10 +43,6 @@ def input_dtset():
         # pre-process files in src dir -> list of files ready to extract dialogues
         pipeline(SRC_PATH)
 
-
-
-
-
     # extract dialogues
 
     # clean dialogues
@@ -56,17 +53,6 @@ def input_dtset():
 
 # "[\s]*-[\s]*[А-Я]" find -This is a Test sentence.
 
-# from tkinter import *
-# root = Tk()
-# txt2 = Entry(root,width=20)
-# txt2.grid(column=0, row=0)
-# lbl2 = Label(root, text='Докладная о')
-# lbl2.grid(column=0, row=1)
-# btn = Button(root, text='click', command=lambda:change())
-# btn.grid(column=0, row=2, columnspan=2)
-# def change():
-# lbl2['text'] = f'Докладная о {txt2.get()}'
-# root.mainloop()
 
 if __name__ == '__main__':
     # Open main window
@@ -95,5 +81,17 @@ if __name__ == '__main__':
     entry_dtset.grid(column=0, row=5, columnspan=2, sticky=W, padx=5)
     path_dtset = Button(root, text="GO", command=lambda:input_dtset())
     path_dtset.grid(column=2, row=5, sticky=W)
+
+    # from tkinter import *
+    # root = Tk()
+    # txt2 = Entry(root,width=20)
+    # txt2.grid(column=0, row=0)
+    # lbl2 = Label(root, text='Докладная о')
+    # lbl2.grid(column=0, row=1)
+    # btn = Button(root, text='click', command=lambda:change())
+    # btn.grid(column=0, row=2, columnspan=2)
+    # def change():
+    # lbl2['text'] = f'Докладная о {txt2.get()}'
+    # root.mainloop()
     # Execute Tkinter
     root.mainloop()
