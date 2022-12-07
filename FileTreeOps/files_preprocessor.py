@@ -37,3 +37,22 @@ def check_n_change_to_utf(src_file_paths, parent_dir_path):
         counter += 1
     # check text newline pattern & remove breaks in dialogue lines -> files ready for dialogues extraction
     check_n_fix_newlines_pattern(new_path)
+
+
+def merge_files_in_directory(path):
+    # make a list of files in the dataset output directory
+    files_paths = [os.path.join(path, x) for x in os.listdir(path)]
+    # create a path to all-in-one dataset file
+    file_name = 'all_in_one_dataset_file.txt'
+    new_file_path = os.path.join(path, file_name)
+    # create all in one dataset file in add
+    with open(new_file_path, mode='a', encoding='utf-8') as output_file:
+        for pth in files_paths:
+            try:
+                with open(pth, mode='r', encoding='utf-8') as input_file:
+                    output_file.write(input_file.read())
+            except IOError:
+                logger.error(f'Can not open file: {pth}')
+
+# merge_files_in_directory("/home/zonengeistbot/Documents/dtset_test")
+
