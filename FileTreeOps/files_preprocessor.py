@@ -1,3 +1,4 @@
+import glob
 import os
 from chardet.universaldetector import UniversalDetector
 from loguru import logger
@@ -54,5 +55,16 @@ def merge_files_in_directory(path):
             except IOError:
                 logger.error(f'Can not open file: {pth}')
 
-# merge_files_in_directory("/home/zonengeistbot/Documents/dtset_test")
+
+def delete_files_except_one(path_to_dir, name_of_file_to_keep):
+    file_to_keep_path = os.path.join(path_to_dir, name_of_file_to_keep)
+    path_for_glob_search = os.path.join(path_to_dir, '*.*')
+    # check if file to keep exists
+    if os.path.isfile(file_to_keep_path):
+        # then delete tmp files
+        for file_name in glob.glob(path_for_glob_search):
+            if not file_name.endswith(name_of_file_to_keep):
+                os.remove(file_name)
+    else:
+        logger.info('You have not merged all datasets created in output directory into all-in-one big dataset file, so we keep all of them as they are.')
 

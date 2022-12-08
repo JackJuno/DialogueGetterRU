@@ -1,4 +1,6 @@
 import os
+import shutil
+from loguru import logger
 from FileTreeOps.files_preprocessor import *
 
 
@@ -19,4 +21,10 @@ def pipeline(src_dir_path):
     # 2. check text newline pattern & remove breaks in dialogue lines -> files ready for dialogues extraction
     check_n_change_to_utf(src_filepaths_list, src_dir_path)
 
-# pipeline('/home/zonengeistbot/Documents/test') # /home/zonengeistbot/Documents/test
+
+def delete_directory_n_all_subdirs(dir_to_delete_path):
+    try:
+        shutil.rmtree(dir_to_delete_path)
+        logger.info(f"Directory <{dir_to_delete_path}> is deleted.")
+    except OSError as e:
+        logger.error(f"Ouch! Directory <{dir_to_delete_path}> is erroneous: {e.strerror}")
