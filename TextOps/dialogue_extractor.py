@@ -1589,7 +1589,15 @@ def extract_n_save_replicas(src_path, dataset_path):
                         replica = clear_dialogue_replica(line)
                         # write down replica to tmp dialogue_list
                         dialogue_list.append(replica)
-                    elif re.match(r"^(\s*)[А-Я]", line):
+                    elif re.match(r"^\s*-\s*-\s*[А-ЯA-Z0-9]", line):
+                        new_line = re.sub(r"-\s*-", "-", new_line)
+                        if re.search(r"\([^)]*\)|\[[^]]*]|\{[^}]*}", new_line):
+                            new_line = re.sub(r"\([^)]*\)|\[[^]]*]|\{[^}]*}", "", new_line)
+                        # clear dialogue replica
+                        replica = clear_dialogue_replica(new_line)
+                        # write down replica to tmp dialogue_list
+                        dialogue_list.append(replica)
+                    elif re.match(r"^(\s*)[А-ЯA-Z]", line):
                         if len(dialogue_list) >= 2:
                             # write down dialogue list to file line, line, \n
                             for n in range(len(dialogue_list)):
