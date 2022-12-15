@@ -1590,7 +1590,7 @@ def extract_n_save_replicas(src_path, dataset_path):
                         # write down replica to tmp dialogue_list
                         dialogue_list.append(replica)
                     elif re.match(r"^\s*-\s*-\s*[А-ЯA-Z0-9]", line):
-                        new_line = re.sub(r"-\s*-", "-", new_line)
+                        new_line = re.sub(r"-\s*-", "-", line)
                         if re.search(r"\([^)]*\)|\[[^]]*]|\{[^}]*}", new_line):
                             new_line = re.sub(r"\([^)]*\)|\[[^]]*]|\{[^}]*}", "", new_line)
                         # clear dialogue replica
