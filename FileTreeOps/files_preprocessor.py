@@ -29,7 +29,7 @@ def check_n_change_to_utf(src_file_paths, parent_dir_path):
             detector.close()
             encodings_str = detector.result['encoding']
             f.close()
-        new_file_name = f"{str(counter)}.txt"
+        new_file_name = f"utf_src_{str(counter)}.txt"
         destination_path = os.path.join(new_path, new_file_name)
         with open(destination_path, 'w', encoding='utf-8') as text:
             with open(filename, 'r', encoding=encodings_str) as f:
